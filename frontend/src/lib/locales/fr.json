@@ -1,0 +1,543 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "add": "Ajouter",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "clear": "Effacer",
+    "submit": "Soumettre",
+    "confirm": "Confirmer",
+    "retry": "Réessayer"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "dashboard": "Tableau de bord",
+    "mealPlan": "Plan de repas",
+    "groceryList": "Liste de courses",
+    "recipes": "Recettes",
+    "chat": "Chat",
+    "profile": "Profil",
+    "settings": "Paramètres",
+    "language": "Langue",
+    "calorieCalculator": "Calculateur de calories",
+    "cookingTimer": "Minuteur de cuisine",
+    "logout": "Déconnexion",
+    "login": "Connexion",
+    "register": "S'inscrire"
+  },
+  "mealPlan": {
+    "title": "Plan de repas",
+    "breakfast": "Petit-déjeuner",
+    "lunch": "Déjeuner",
+    "dinner": "Dîner",
+    "snack": "Collation",
+    "generate": "Générer",
+    "regenerate": "Régénérer",
+    "save": "Enregistrer",
+    "calories": "Calories",
+    "protein": "Protéines",
+    "carbs": "Glucides",
+    "fat": "Lipides",
+    "servings": "Portions",
+    "cookingTime": "Temps de cuisson",
+    "ingredients": "Ingrédients",
+    "instructions": "Instructions",
+    "tips": "Conseils",
+    "nutritionRating": "Note nutritionnelle",
+    "progressDetails": "Détails des progrès",
+    "noMealsYet": "Aucun repas planifié",
+    "addMealsToTrackProgress": "Ajoutez des repas pour suivre vos progrès",
+    "allIngredientsReady": "Tous les ingrédients sont prêts !",
+    "recipeCompleted": "Recette terminée !",
+    "generating": "Génération en cours",
+    "generatingRecipe": "recette...",
+    "macros": "Macros",
+    "addMeal": "Ajouter un repas",
+    "add": "Ajouter",
+    "min": "min",
+    "servingsLabel": "Portions:",
+    "cal": "cal",
+    "checked": "cochés",
+    "stepsDone": "étapes terminées",
+    "setYourGoals": "Définir vos objectifs",
+    "trackNutritionProgress": "Suivez vos progrès nutritionnels",
+    "setGoals": "Définir objectifs",
+    "calculate": "Calculer",
+    "failedToLoadRecipe": "Échec du chargement des détails de la recette",
+    "tryAgain": "Réessayer",
+    "groceryList": "Liste de courses",
+    "noMealsSelected": "Aucun repas sélectionné",
+    "selectMealsForGroceryList": "Sélectionnez des repas pour voir la liste de courses",
+    "loadingGroceryList": "Chargement de la liste de courses...",
+    "noIngredientsAvailable": "Aucun ingrédient disponible",
+    "mealSelected": "repas sélectionné",
+    "mealsSelected": "repas sélectionnés",
+    "yourMeals": "VOS REPAS",
+    "selectAll": "Tout sélectionner",
+    "deselectAll": "Tout désélectionner"
+  },
+  "progress": {
+    "consumed": "Consommé",
+    "goal": "Objectif",
+    "left": "Restant",
+    "usingPersonalGoals": "Utilisation de vos objectifs personnels",
+    "usingDefaultGoals": "Utilisation des objectifs par défaut",
+    "loadingGoals": "Chargement de vos objectifs...",
+    "failedToLoadGoals": "Échec du chargement des objectifs",
+    "usingDefaultGoalsForCalculation": "Utilisation des objectifs par défaut pour le calcul",
+    "noProgressYet": "Aucun progrès pour le moment"
+  },
+  "recipe": {
+    "title": "Recette",
+    "difficulty": "Difficulté",
+    "prepTime": "Temps de préparation",
+    "totalTime": "Temps total",
+    "chefsTips": "Conseils du chef",
+    "nutritionPerServing": "Nutrition (par portion)",
+    "step": "Étape",
+    "minute": "minute",
+    "minutes": "minutes",
+    "hour": "heure",
+    "hours": "heures",
+    "noIngredients": "Aucun ingrédient disponible",
+    "noInstructions": "Aucune instruction disponible",
+    "noData": "Aucune donnée de recette disponible"
+  },
+  "dashboard": {
+    "welcomeBack": "Bon retour",
+    "todaysProgress": "Progrès d'aujourd'hui",
+    "recentActivity": "Activité récente",
+    "quickActions": "Actions rapides",
+    "createMealPlan": "Créer un plan de repas",
+    "browsRecipes": "Parcourir les recettes",
+    "trackProgress": "Suivre les progrès"
+  },
+  "profile": {
+    "title": "Profil",
+    "personalInfo": "Informations personnelles",
+    "goals": "Objectifs",
+    "preferences": "Préférences",
+    "healthMetrics": "Métriques de santé",
+    "weight": "Poids",
+    "bodyFat": "Masse grasse",
+    "targetWeight": "Poids cible",
+    "targetBodyFat": "Masse grasse cible",
+    "dailyCaloriesGoal": "Objectif calorique quotidien",
+    "dailyProteinGoal": "Objectif protéines quotidien",
+    "dailyCarbsGoal": "Objectif glucides quotidien",
+    "dailyFatGoal": "Objectif lipides quotidien"
+  },
+  "chat": {
+    "title": "Assistant Chef",
+    "placeholder": "Demandez-moi tout sur la cuisine...",
+    "send": "Envoyer",
+    "thinking": "Réflexion...",
+    "error": "Désolé, je n'ai pas pu traiter votre demande. Veuillez réessayer.",
+    "welcomeMessage": "Bonjour ! Je suis votre assistant chef personnel. Comment puis-je vous aider aujourd'hui ?",
+    "defaultPreferenceMessage": "Générer une recette selon mes préférences",
+    "errorMessage": "Oups, quelque chose s'est mal passé.",
+    "signUpToSave": "Inscrivez-vous pour sauvegarder les recettes",
+    "recipeSaved": "Recette sauvegardée !",
+    "recipeSavedDescription": "Votre recette a été ajoutée à vos recettes sauvegardées.",
+    "failedToSave": "Échec de la sauvegarde",
+    "failedToSaveDescription": "Une erreur s'est produite. Veuillez réessayer.",
+    "signUpForGrocery": "Inscrivez-vous pour ajouter à la liste de courses",
+    "noIngredients": "Aucun ingrédient trouvé",
+    "noIngredientsDescription": "Cette recette n'a pas de liste d'ingrédients valide.",
+    "quickAddRecipes": "Ajout Rapide de Recettes",
+    "addedToGrocery": "Ajouté à la liste de courses !",
+    "saveRecipe": "Sauvegarder la recette",
+    "recipeSavedStatus": "Recette sauvegardée",
+    "addToGroceryList": "Ajouter à la liste de courses",
+    "addedToGroceryList": "Ajouté à la liste",
+    "generating": "Génération en cours"
+  },
+  "chatHistory": {
+    "title": "Historique des conversations",
+    "recentConversations": "Vos conversations récentes",
+    "untitled": "Sans titre",
+    "enterNewTitle": "Entrez un nouveau titre"
+  },
+  "preferences": {
+    "nutrition": {
+      "highProtein": "Riche en protéines",
+      "highFiber": "Riche en fibres",
+      "lowCarb": "Faible en glucides",
+      "balanced": "Équilibré",
+      "highCarb": "Riche en glucides",
+      "lowFat": "Faible en gras",
+      "vegetarian": "Végétarien",
+      "vegan": "Végétalien"
+    },
+    "cuisine": {
+      "italian": "Italienne",
+      "mexican": "Mexicaine",
+      "mediterranean": "Méditerranéenne",
+      "american": "Américaine",
+      "french": "Française",
+      "indian": "Indienne",
+      "thai": "Thaïlandaise",
+      "chinese": "Chinoise",
+      "japanese": "Japonaise",
+      "middleEastern": "Moyen-Orient",
+      "korean": "Coréenne",
+      "african": "Africaine"
+    },
+    "mealType": {
+      "breakfast": "Petit-déjeuner",
+      "lunch": "Déjeuner",
+      "dinner": "Dîner",
+      "appetizer": "Entrée",
+      "dessert": "Dessert",
+      "snack": "Collation",
+      "smoothieDrink": "Smoothie/Boisson"
+    },
+    "cookingTime": {
+      "under15": "Moins de 15 min",
+      "under30": "Moins de 30 min",
+      "slowCook": "Cuisson lente (plus d'1h)"
+    },
+    "skillLevel": {
+      "beginner": "Débutant",
+      "intermediate": "Intermédiaire",
+      "advanced": "Avancé"
+    },
+    "spiceLevel": {
+      "mild": "Doux",
+      "medium": "Moyen",
+      "spicy": "Épicé",
+      "extraSpicy": "Très épicé"
+    },
+    "meats": {
+      "chicken": "Poulet",
+      "beef": "Bœuf",
+      "pork": "Porc",
+      "fish": "Poisson",
+      "seafood": "Fruits de mer",
+      "turkey": "Dinde",
+      "lamb": "Agneau"
+    },
+    "vegetables": {
+      "tomatoes": "Tomates",
+      "onions": "Oignons",
+      "peppers": "Poivrons",
+      "mushrooms": "Champignons",
+      "spinach": "Épinards",
+      "broccoli": "Brocoli",
+      "carrots": "Carottes",
+      "zucchini": "Courgettes"
+    },
+    "equipment": {
+      "oven": "Four",
+      "stove": "Cuisinière",
+      "airFryer": "Friteuse à air",
+      "slowCooker": "Mijoteuse",
+      "instantPot": "Autocuiseur",
+      "grill": "Gril",
+      "microwave": "Micro-ondes"
+    },
+    "signInToSave": "Connectez-vous pour sauvegarder vos plans de repas et synchroniser sur tous vos appareils",
+    "guestPlanningCta": "Planifiez votre semaine avec des recettes générées par IA. Connectez-vous pour sauvegarder vos plans et synchroniser sur tous vos appareils."
+  },
+  "auth": {
+    "signIn": "Se connecter",
+    "signUp": "S'inscrire",
+    "email": "Email",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "forgotPassword": "Mot de passe oublié ?",
+    "dontHaveAccount": "Vous n'avez pas de compte ?",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "signInWithGoogle": "Se connecter avec Google",
+    "signUpWithGoogle": "S'inscrire avec Google",
+    "signingOut": "Déconnexion..."
+  },
+  "languages": {
+    "en": "English",
+    "fr": "Français"
+  },
+  "settings": {
+    "languageDescription": "Choisissez votre langue préférée pour l'application",
+    "usingBrowserLanguage": "Utilise la langue de votre navigateur",
+    "accountSettings": "Paramètres du compte",
+    "accountDescription": "Gérez votre profil et vos préférences de compte (Bientôt disponible)",
+    "notifications": "Notifications",
+    "notificationsDescription": "Configurez vos préférences de notification (Bientôt disponible)",
+    "helpOnboarding": "Aide & Intégration",
+    "helpOnboardingDescription": "Apprenez à utiliser MonAmiChef avec notre visite interactive",
+    "newToMonAmiChef": "Nouveau sur MonAmiChef ? Suivez notre visite guidée rapide pour découvrir toutes les fonctionnalités et commencer à cuisiner avec l'IA !",
+    "restartProductTour": "Redémarrer la Visite",
+    "tourReset": "Visite Réinitialisée",
+    "tourResetDescription": "La visite de bienvenue s'affichera à nouveau lorsque vous visiterez la page de chat."
+  },
+  "onboarding": {
+    "welcomeModal": {
+      "slide1": {
+        "title": "Bienvenue sur MonAmiChef ! 👋",
+        "description": "Votre compagnon culinaire propulsé par l'IA qui vous aide à découvrir des recettes, planifier vos repas et rendre la cuisine agréable."
+      },
+      "slide2": {
+        "title": "Discutez avec le Chef IA 💬",
+        "description": "Dites-moi simplement ce dont vous avez envie ou quels ingrédients vous avez. Je vous suggérerai des recettes personnalisées instantanément."
+      },
+      "slide3": {
+        "title": "Plans de Repas Hebdomadaires 📅",
+        "description": "Générez des plans de repas complets pour votre semaine en quelques secondes. Fini le stress du \"qu'est-ce qu'on mange?\" !"
+      },
+      "slide4": {
+        "title": "Listes de Courses Intelligentes 🛒",
+        "description": "Obtenez automatiquement des listes de courses organisées à partir de vos plans de repas. N'oubliez plus jamais un ingrédient !"
+      },
+      "next": "Suivant",
+      "skip": "Passer",
+      "startTour": "Démarrer la Visite",
+      "exploreOnOwn": "Ou explorer par moi-même",
+      "closeAriaLabel": "Fermer l'intégration et passer la visite"
+    },
+    "tour": {
+      "step1": {
+        "title": "Commencer une Conversation",
+        "description": "Dites-moi ce dont vous avez envie ou quels ingrédients vous avez. Essayez : \"Dîner rapide pour 2\" ou \"Que puis-je faire avec du poulet ?\""
+      },
+      "step2": {
+        "title": "Personnalisez Vos Recettes",
+        "description": "Filtrez les recettes par cuisine, temps de cuisson, niveau de compétence, préférences alimentaires, et plus encore. Rendez chaque recette parfaite pour vous !"
+      },
+      "step3": {
+        "title": "Planification Hebdomadaire",
+        "description": "Générez des plans de repas complets pour votre semaine en quelques secondes. Cliquez ici pour commencer à planifier !"
+      },
+      "step4": {
+        "title": "Listes de Courses Intelligentes",
+        "description": "Générez automatiquement des listes de courses organisées à partir de vos plans de repas. N'oubliez plus jamais un ingrédient !"
+      },
+      "step5": {
+        "title": "Historique des Conversations",
+        "description": "Toutes vos conversations sont automatiquement sauvegardées ici. Renommez, supprimez ou continuez n'importe quelle discussion à tout moment."
+      },
+      "nextBtn": "Suivant →",
+      "prevBtn": "← Précédent",
+      "doneBtn": "Terminé ! 🎉",
+      "progress": "{{current}} sur {{total}}"
+    },
+    "mobileTour": {
+      "step1": {
+        "title": "Commencer à Discuter",
+        "description": "Posez-moi n'importe quelle question sur la cuisine ! Essayez : \"Recettes de pâtes faciles\" ou \"Idées de dîner sain\""
+      },
+      "step2": {
+        "title": "Définir Vos Préférences",
+        "description": "Appuyez sur l'icône des paramètres pour personnaliser les recettes par cuisine, temps et besoins alimentaires."
+      },
+      "step3": {
+        "title": "Explorer les Fonctionnalités",
+        "description": "Ouvrez le menu pour accéder à la planification des repas, aux listes de courses et aux recettes sauvegardées."
+      }
+    },
+    "examplePrompts": {
+      "title": "Essayez de me demander...",
+      "subtitle": "ou tapez votre propre question ci-dessous",
+      "quickDinner": "Dîner rapide pour 2",
+      "healthyVegetarian": "Recettes végétariennes saines",
+      "chickenRecipes": "Que puis-je faire avec du poulet ?",
+      "easyPasta": "Plats de pâtes faciles",
+      "spicyAsian": "Cuisine asiatique épicée",
+      "familyMeals": "Idées de repas familiaux"
+    }
+  },
+  "groceryList": {
+    "title": "Liste de courses",
+    "meal": "repas",
+    "meals": "repas",
+    "loading": "Chargement de la liste de courses...",
+    "emptyState": "Votre liste de courses est vide",
+    "emptyStateCta": "Ajoutez des repas de votre plan de repas pour générer votre liste de courses",
+    "goToMealPlan": "Aller au plan de repas",
+    "mealsSection": "Repas",
+    "ingredientsSection": "Ingrédients",
+    "customItemsSection": "Articles supplémentaires",
+    "addItem": "Ajouter",
+    "addItemPlaceholder": "Ajouter un article (ex: Essuie-tout)",
+    "quantityPlaceholder": "Qté (facultatif)",
+    "clearAll": "Tout effacer",
+    "confirmClearAll": "Êtes-vous sûr de vouloir effacer toute votre liste de courses ?",
+    "confirmRemoveMeal": "Retirer le repas de la liste ?",
+    "confirmRemoveMealDescription": "Êtes-vous sûr de vouloir retirer \"{{mealName}}\" de votre liste de courses ? Ses ingrédients n'apparaîtront plus dans votre liste.",
+    "mealsAddedSuccess": "Repas ajoutés à la liste !",
+    "mealsAddedSuccessDescription_one": "{{count}} repas a été ajouté à votre liste de courses",
+    "mealsAddedSuccessDescription_other": "{{count}} repas ont été ajoutés à votre liste de courses",
+    "seeGroceryList": "Voir la liste de courses",
+    "showAllCategories": "Afficher toutes les catégories",
+    "addToCategoryPlaceholder": "Ajouter un article...",
+    "categories": {
+      "produce": "Fruits et Légumes",
+      "protein": "Protéines",
+      "dairy": "Produits Laitiers",
+      "grains": "Céréales",
+      "spices": "Épices et Assaisonnements",
+      "other": "Autre"
+    }
+  },
+  "landing": {
+    "hero": {
+      "badge": "Assistant Culinaire propulsé par l'IA",
+      "title": "Votre Chef Personnel",
+      "titleContinued": "Propulsé par l'IA",
+      "subtitle": "De \"Qu'est-ce qu'on mange?\" à des plans de repas en quelques secondes.",
+      "subtitleContinued": "Cuisinez plus intelligemment avec des recettes personnalisées par IA.",
+      "ctaPrimary": "Commencer Gratuitement",
+      "ctaSecondary": "Découvrir Comment",
+      "socialProof": "Rejoignez 10 000+ cuisiniers • Aucune carte bancaire requise"
+    },
+    "problem": {
+      "title": "Ça Vous Dit Quelque Chose?",
+      "subtitle": "Cuisiner devrait être agréable, pas stressant. Pourtant ces défis reviennent sans cesse:",
+      "endless": {
+        "title": "Planification Interminable",
+        "description": "Passer des heures chaque semaine à planifier les repas et chercher des recettes"
+      },
+      "foodWaste": {
+        "title": "Gaspillage Alimentaire",
+        "description": "Jeter des courses inutilisées à cause d'une mauvaise planification"
+      },
+      "recipeFatigue": {
+        "title": "Fatigue des Recettes",
+        "description": "Manger les mêmes repas en boucle parce que vous manquez d'idées"
+      }
+    },
+    "solution": {
+      "title": "Rencontrez Votre Sous-Chef IA",
+      "subtitle": "Transformez votre routine culinaire en trois étapes simples",
+      "step1": {
+        "title": "Discutez avec l'IA",
+        "description": "Dites à Mon Ami Chef ce que vous voulez cuisiner. Conversation naturelle, compréhension instantanée."
+      },
+      "step2": {
+        "title": "Obtenez Votre Plan",
+        "description": "Recevez des recettes personnalisées et des plans de repas complets en quelques secondes."
+      },
+      "step3": {
+        "title": "Faites Vos Courses et Cuisinez",
+        "description": "Listes de courses générées automatiquement par catégorie. Tout ce dont vous avez besoin, rien de superflu."
+      },
+      "demoUser": "J'ai besoin d'un dîner végétarien sain pour 4 personnes avec les ingrédients que j'ai déjà",
+      "demoAiTitle": "Pâtes aux Pois Chiches Méditerranéennes",
+      "demoAiResponse": "Parfait! Voici une délicieuse recette utilisant des tomates cerises, des pois chiches et des pâtes. Riche en protéines et prête en 25 minutes!"
+    },
+    "features": {
+      "title": "Tout Ce Dont Vous Avez Besoin Pour Mieux Cuisiner",
+      "subtitle": "Des fonctionnalités puissantes conçues pour rendre la cuisine facile et agréable",
+      "aiRecipe": {
+        "title": "Générateur de Recettes IA",
+        "description": "Discutez naturellement avec l'IA pour obtenir des recettes personnalisées instantanément. Pas de recherche, pas de défilement."
+      },
+      "mealPlanner": {
+        "title": "Planificateur Hebdomadaire",
+        "description": "Plans de repas complets générés en quelques secondes. Petit-déjeuner, déjeuner, dîner - tout planifié pour vous."
+      },
+      "groceryList": {
+        "title": "Listes de Courses Intelligentes",
+        "description": "Listes de courses générées automatiquement par catégorie. N'oubliez jamais un ingrédient."
+      },
+      "nutrition": {
+        "title": "Suivi Nutritionnel",
+        "description": "Suivez les calories, les macros et atteignez vos objectifs santé avec des insights intelligents."
+      },
+      "tools": {
+        "title": "Outils de Cuisine",
+        "description": "Minuteurs multiples, convertisseurs d'unités et assistants de cuisine."
+      },
+      "collection": {
+        "title": "Collection de Recettes",
+        "description": "Sauvegardez vos favoris et créez votre livre de recettes personnel."
+      }
+    },
+    "testimonials": {
+      "title": "Adoré par les Cuisiniers du Monde Entier",
+      "subtitle": "Rejoignez des milliers de personnes qui ont transformé leur cuisine",
+      "busyMom": {
+        "quote": "Mon Ami Chef a changé la donne pour notre famille. Fini le stress du 'qu'est-ce qu'on mange'!",
+        "name": "Sarah M.",
+        "role": "Maman Occupée de 3 Enfants"
+      },
+      "homeCook": {
+        "quote": "J'ai économisé tellement d'argent et réduit le gaspillage alimentaire. Les listes de courses sont incroyablement intelligentes.",
+        "name": "Jacques T.",
+        "role": "Cuisinier Amateur"
+      },
+      "fitness": {
+        "quote": "Parfait pour atteindre mes objectifs de macros. Le suivi nutritionnel est précis et facile à utiliser.",
+        "name": "Émilie R.",
+        "role": "Passionnée de Fitness"
+      },
+      "beginner": {
+        "quote": "Même en tant que débutant, je cuisine des plats dignes d'un restaurant. L'IA me guide à chaque étape.",
+        "name": "Michel K.",
+        "role": "Débutant en Cuisine"
+      },
+      "vegetarian": {
+        "quote": "Trouver des recettes végétariennes n'a jamais été aussi facile. L'IA comprend exactement ce dont j'ai besoin!",
+        "name": "Lisa P.",
+        "role": "Cuisinière Végétarienne"
+      },
+      "mealPrep": {
+        "quote": "La préparation des repas du dimanche est maintenant sans effort. Je planifie toute ma semaine en moins de 5 minutes.",
+        "name": "David H.",
+        "role": "Pro de la Préparation"
+      },
+      "stats": {
+        "activeUsers": "Utilisateurs Actifs",
+        "recipesGenerated": "Recettes Générées",
+        "userRating": "Note des Utilisateurs",
+        "wouldRecommend": "Recommanderaient"
+      }
+    },
+    "finalCta": {
+      "badge": "Commencez Votre Aventure Culinaire Aujourd'hui",
+      "title": "Prêt à Transformer",
+      "titleContinued": "Votre Cuisine?",
+      "subtitle": "Rejoignez des milliers de cuisiniers qui ont dit adieu au stress de la planification des repas",
+      "benefits": {
+        "noCard": "Aucune carte bancaire requise",
+        "freePlan": "Plan gratuit pour toujours",
+        "unlimited": "Génération de recettes illimitée",
+        "cancel": "Annulez à tout moment"
+      },
+      "cta": "Commencer Gratuitement",
+      "reassurance": "Configuration en 30 secondes • Aucune carte bancaire requise",
+      "socialProof": "cuisiniers satisfaits",
+      "rating": "note"
+    },
+    "footer": {
+      "tagline": "Votre chef personnel propulsé par l'IA. Transformez votre cuisine avec des recettes personnalisées, des plans de repas et des listes de courses intelligentes.",
+      "product": "Produit",
+      "company": "Entreprise",
+      "resources": "Ressources",
+      "legal": "Légal",
+      "features": "Fonctionnalités",
+      "pricing": "Tarifs",
+      "faq": "FAQ",
+      "about": "À Propos",
+      "blog": "Blog",
+      "contact": "Contact",
+      "privacy": "Politique de Confidentialité",
+      "terms": "Conditions d'Utilisation",
+      "cookies": "Politique des Cookies",
+      "recipeGenerator": "Générateur de Recettes",
+      "mealPlanner": "Planificateur de Repas",
+      "copyright": "Mon Ami Chef. Tous droits réservés.",
+      "madeWith": "Fait avec",
+      "forCooks": "pour les cuisiniers du monde entier"
+    }
+  }
+}
+

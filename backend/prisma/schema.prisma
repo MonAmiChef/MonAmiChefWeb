@@ -1,0 +1,327 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  schemas  = ["public"]
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model ChatMessage {
+  history         Json         @db.Json
+  messages        Json[]       @db.Json
+  conversation_id String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  created_at      DateTime     @default(now())
+  Conversation    Conversation @relation(fields: [conversation_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "ChatMessage_conversationId_fkey")
+
+  @@schema("public")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Conversation {
+  title            String
+  created_at       DateTime     @default(now())
+  owner_guest_id   String?      @db.Uuid
+  owner_profile_id String?      @db.Uuid
+  id               String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  ChatMessage      ChatMessage?
+  Guest            Guest?       @relation(fields: [owner_guest_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  Profile          Profile?     @relation(fields: [owner_profile_id], references: [id], map: "Conversation_userId_fkey")
+
+  @@schema("public")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Profile {
+  id              String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email           String?           @unique
+  display_name    String?
+  created_at      DateTime          @default(now())
+  updated_at      DateTime?
+  avatar_url      String?
+  Conversation    Conversation[]
+  Guest           Guest[]
+  GuestConversion GuestConversion[]
+  SavedRecipe     SavedRecipe[]
+  HealthMetric    HealthMetric[]
+  UserGoals       UserGoals?
+
+  @@schema("public")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Guest {
+  id                   String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  created_at           DateTime          @default(now()) @db.Timestamptz(6)
+  converted_to_profile Boolean           @default(false)
+  converted_user_id    String?           @db.Uuid
+  converted_at         DateTime?         @db.Timestamptz(6)
+  conversion_token     String            @default(dbgenerated("gen_random_uuid()"))
+  Conversation         Conversation[]
+  Profile              Profile?          @relation(fields: [converted_user_id], references: [id])
+  GuestConversion      GuestConversion[]
+  SavedRecipe          SavedRecipe[]
+
+  @@schema("public")
+}
+
+// Constrain mealSlot values
+enum MealSlot {
+  breakfast
+  lunch
+  dinner
+  snack
+
+  @@schema("public")
+}
+
+// Optional: constrain how the plan was created
+enum GenerationMethod {
+  manual
+  ai_generated
+  ai_assisted
+
+  @@schema("public")
+}
+
+model MealPlan {
+  id               String            @id @default(uuid()) @db.Uuid
+  userId           String            @map("user_id") @db.Uuid // logical ref to auth.users; no DB FK
+  weekStartDate    DateTime          @map("week_start_date") @db.Date // store "date" only
+  createdAt        DateTime          @default(now()) @map("created_at")
+  updatedAt        DateTime          @updatedAt @map("updated_at")
+  title            String?
+  generationPrompt String?           @map("generation_prompt") @db.Text
+  generationMethod GenerationMethod? @map("generation_method")
+  aiPreferences    Json?             @map("ai_preferences")
+
+  // Relations
+  items MealPlanItem[]
+
+  // Useful for queries like "get this user's plan for week X"
+  @@index([userId, weekStartDate], map: "meal_plans_user_week_idx")
+  @@schema("public")
+}
+
+model MealPlanItem {
+  id         String   @id @default(uuid()) @db.Uuid
+  mealPlanId String   @map("meal_plan_id") @db.Uuid
+  day        Int // 0..6 (Sun..Sat)
+  mealSlot   MealSlot @map("meal_slot")
+  recipeId   String?  @map("recipe_id") @db.Uuid
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  // Relations
+  mealPlan     MealPlan      @relation(fields: [mealPlanId], references: [id], onDelete: Cascade)
+  recipe       Recipe?       @relation(fields: [recipeId], references: [id])
+  groceryMeals GroceryMeal[]
+
+  // One row per (plan, day, meal)
+  @@unique([mealPlanId, day, mealSlot], map: "meal_plan_day_slot_unique")
+  @@index([mealPlanId], map: "meal_plan_items_plan_idx")
+  @@schema("public")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model GuestConversion {
+  id                String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  guest_id          String   @db.Uuid
+  converted_user_id String   @db.Uuid
+  converted_at      DateTime @default(now()) @db.Timestamptz(6)
+  ip_address        String?
+  user_agent        String?
+  Profile           Profile  @relation(fields: [converted_user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  Guest             Guest    @relation(fields: [guest_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Recipe {
+  id            String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title         String
+  content_json  Json            @db.Json
+  nutrition     Json?           @db.Json
+  tags          String[]
+  created_at    DateTime        @default(now())
+  SavedRecipe   SavedRecipe[]
+  MealPlanItem  MealPlanItem[]
+
+  @@schema("public")
+}
+
+/// Grocery list models - Shopping cart pattern (one active list per user)
+model GroceryList {
+  id          String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId      String              @unique @map("user_id") @db.Uuid
+  meals       GroceryMeal[]
+  customItems CustomGroceryItem[]
+  createdAt   DateTime            @default(now()) @map("created_at")
+  updatedAt   DateTime            @updatedAt @map("updated_at")
+
+  @@schema("public")
+}
+
+model GroceryMeal {
+  id             String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  listId         String   @map("list_id") @db.Uuid
+  mealPlanItemId String   @map("meal_plan_item_id") @db.Uuid
+  day            Int      // 0..6 (Sun..Sat), matches MealPlanItem.day
+  mealSlot       MealSlot @map("meal_slot")
+  addedAt        DateTime @default(now()) @map("added_at")
+
+  list         GroceryList  @relation(fields: [listId], references: [id], onDelete: Cascade)
+  mealPlanItem MealPlanItem @relation(fields: [mealPlanItemId], references: [id], onDelete: Cascade)
+
+  @@unique([listId, mealPlanItemId], map: "grocery_meal_list_item_unique")
+  @@index([listId])
+  @@schema("public")
+}
+
+model CustomGroceryItem {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  listId    String   @map("list_id") @db.Uuid
+  name      String
+  quantity  String?
+  category  String?
+  checked   Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  list GroceryList @relation(fields: [listId], references: [id], onDelete: Cascade)
+
+  @@index([listId])
+  @@schema("public")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model SavedRecipe {
+  id               String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  owner_profile_id String?  @db.Uuid
+  owner_guest_id   String?  @db.Uuid
+  recipe_id        String   @db.Uuid
+  created_at       DateTime @default(now())
+  Recipe           Recipe   @relation(fields: [recipe_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  Profile          Profile? @relation(fields: [owner_profile_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  Guest            Guest?   @relation(fields: [owner_guest_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([owner_profile_id, recipe_id])
+  @@unique([owner_guest_id, recipe_id])
+  @@schema("public")
+}
+
+
+/// Health metrics tracking for profile users only
+model HealthMetric {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  profile_id  String   @db.Uuid
+  weight      Decimal? @db.Decimal(5, 2) // e.g., 999.99 kg
+  body_fat    Decimal? @db.Decimal(4, 2) // e.g., 99.99 %
+  recorded_at DateTime @db.Date
+  created_at  DateTime @default(now())
+  Profile     Profile  @relation(fields: [profile_id], references: [id], onDelete: Cascade)
+
+  @@index([profile_id, recorded_at])
+  @@schema("public")
+}
+
+/// User health goals for profile users only
+model UserGoals {
+  id                   String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  profile_id           String   @unique @db.Uuid
+  target_weight        Decimal? @db.Decimal(5, 2)
+  target_body_fat      Decimal? @db.Decimal(4, 2)
+  daily_protein_goal   Int?     // grams
+  daily_carbs_goal     Int?     // grams
+  daily_fat_goal       Int?     // grams
+  daily_calories_goal  Int?     // kcal
+  created_at           DateTime @default(now())
+  updated_at           DateTime @updatedAt
+  Profile              Profile  @relation(fields: [profile_id], references: [id], onDelete: Cascade)
+
+  @@schema("public")
+}
+
+// Stripe Integration Models
+
+/// Enum for Stripe subscription status
+enum StripeSubscriptionStatus {
+  not_started
+  incomplete
+  incomplete_expired
+  trialing
+  active
+  past_due
+  canceled
+  unpaid
+  paused
+
+  @@map("stripe_subscription_status")
+  @@schema("public")
+}
+
+/// Enum for Stripe order status
+enum StripeOrderStatus {
+  pending
+  completed
+  canceled
+
+  @@map("stripe_order_status")
+  @@schema("public")
+}
+
+/// Links Supabase users to Stripe customers
+/// This model contains row level security and requires additional setup for migrations.
+model StripeCustomer {
+  id          BigInt    @id @default(autoincrement())
+  user_id     String    @unique @db.Uuid
+  customer_id String    @unique
+  created_at  DateTime  @default(now()) @db.Timestamptz()
+  updated_at  DateTime  @default(now()) @db.Timestamptz()
+  deleted_at  DateTime? @db.Timestamptz()
+
+  @@map("stripe_customers")
+  @@schema("public")
+}
+
+/// Manages Stripe subscription data
+/// This model contains row level security and requires additional setup for migrations.
+model StripeSubscription {
+  id                    BigInt                    @id @default(autoincrement())
+  customer_id           String                    @unique
+  subscription_id       String?
+  price_id              String?
+  current_period_start  BigInt?
+  current_period_end    BigInt?
+  cancel_at_period_end  Boolean                   @default(false)
+  payment_method_brand  String?
+  payment_method_last4  String?
+  status                StripeSubscriptionStatus
+  created_at            DateTime                  @default(now()) @db.Timestamptz()
+  updated_at            DateTime                  @default(now()) @db.Timestamptz()
+  deleted_at            DateTime?                 @db.Timestamptz()
+
+  @@map("stripe_subscriptions")
+  @@schema("public")
+}
+
+/// Stores Stripe order/purchase information
+/// This model contains row level security and requires additional setup for migrations.
+model StripeOrder {
+  id                  BigInt            @id @default(autoincrement())
+  checkout_session_id String
+  payment_intent_id   String
+  customer_id         String
+  amount_subtotal     BigInt
+  amount_total        BigInt
+  currency            String
+  payment_status      String
+  status              StripeOrderStatus @default(pending)
+  created_at          DateTime          @default(now()) @db.Timestamptz()
+  updated_at          DateTime          @default(now()) @db.Timestamptz()
+  deleted_at          DateTime?         @db.Timestamptz()
+
+  @@map("stripe_orders")
+  @@schema("public")
+}
